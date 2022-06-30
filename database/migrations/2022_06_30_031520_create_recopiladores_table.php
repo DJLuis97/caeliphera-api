@@ -15,6 +15,7 @@ class CreateRecopiladoresTable extends Migration {
 			$table->id();
 			// Columna única ya que la relación es de uno-uno, si es uno-muchos quitar relación
 			$table->foreignIdFor(\App\Models\Person::class)->unique();
+			$table->foreignId('leader_id')->unique()->constrained('users');
 			$table->timestamps();
 		});
 	}

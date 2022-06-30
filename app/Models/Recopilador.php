@@ -23,4 +23,13 @@ class Recopilador extends Model {
 	public function person (): BelongsTo {
 		return $this->belongsTo(Person::class);
 	}
+
+	/**
+	 * Relación._ Get the leader (user) that owns the recopilador.
+	 *
+	 * @return BelongsTo
+	 */
+	public function leader (): BelongsTo {
+		return $this->belongsTo(User::class, 'leader_id');
+	}
 }

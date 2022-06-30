@@ -4,6 +4,7 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -46,5 +47,14 @@ class User extends Authenticatable {
 	 */
 	public function person (): BelongsTo {
 		return $this->belongsTo(Person::class);
+	}
+
+	/**
+	 * Relación._ Get the recopilador associated with the leader (user).
+	 *
+	 * @return HasOne
+	 */
+	public function recopiladorAsLeader (): HasOne {
+		return $this->hasOne(Recopilador::class, 'leader_id');
 	}
 }
