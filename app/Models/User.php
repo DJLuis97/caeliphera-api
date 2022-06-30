@@ -68,6 +68,6 @@ class User extends Authenticatable {
 	 * @return Builder
 	 */
 	public function scopeLeader (Builder $query): Builder {
-		return $query->where('type_leader', true);
+		return $query->where('leader_type', true);
 	}
 }
