@@ -32,4 +32,13 @@ class Recopilador extends Model {
 	public function leader (): BelongsTo {
 		return $this->belongsTo(User::class, 'leader_id');
 	}
+
+	/**
+	 * Relación._ Get the encargado (person) that owns the recopilador.
+	 *
+	 * @return BelongsTo
+	 */
+	public function encargado (): BelongsTo {
+		return $this->belongsTo(Person::class, 'id_encargado');
+	}
 }

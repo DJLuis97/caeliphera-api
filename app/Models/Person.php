@@ -25,4 +25,13 @@ class Person extends Model {
 	public function recopilador (): HasOne {
 		return $this->hasOne(Recopilador::class);
 	}
+
+	/**
+	 * Relación._ Get the recopilador associated with the encargado (person).
+	 *
+	 * @return HasOne
+	 */
+	public function recopiladorAsEncargado (): HasOne {
+		return $this->hasOne(Recopilador::class, 'id_encargado');
+	}
 }
