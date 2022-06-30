@@ -1,14 +1,14 @@
-GET http://localhost:8000/api/auth/logout
-Accept: application/json
-Authorization: Bearer {{token}}
-
-###
 POST http://localhost:8000/api/auth/login
 Content-Type: application/json
 
 {
 	"email": "luis@test.dev",
-	"password": "password"
+	"password": "{{password}}"
 }
 
+> {% client.global.set('auth_token', response.body.access_token) %}
+
 ###
+GET http://localhost:8000/api/auth/logout
+Accept: application/json
+Authorization: Bearer {{auth_token}}
