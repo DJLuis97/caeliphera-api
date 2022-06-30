@@ -8,6 +8,6 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller {
 	public function leader (): UserCollection {
-		return new UserCollection(User::query()->leader()->get());
+		return new UserCollection(User::query()->with('person')->leader()->get());
 	}
 }

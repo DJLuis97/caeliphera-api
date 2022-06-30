@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -34,5 +35,16 @@ class Person extends Model {
 	 */
 	public function recopiladorAsEncargado (): HasMany {
 		return $this->hasMany(Recopilador::class, 'id_encargado');
+	}
+
+	/**
+	 * Accessors._ Get the people's full_name attribute.
+	 *
+	 * @return Attribute
+	 */
+	protected function fullName (): Attribute {
+		return Attribute::get(function () {
+			return "{$this->first_name} {$this->last_name}";
+		});
 	}
 }
