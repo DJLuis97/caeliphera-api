@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Person extends Model {
@@ -27,11 +28,11 @@ class Person extends Model {
 	}
 
 	/**
-	 * Relación._ Get the recopilador associated with the encargado (person).
+	 * Relación._ Get the recopiladores for the encargado (person).
 	 *
-	 * @return HasOne
+	 * @return HasMany
 	 */
-	public function recopiladorAsEncargado (): HasOne {
-		return $this->hasOne(Recopilador::class, 'id_encargado');
+	public function recopiladorAsEncargado (): HasMany {
+		return $this->hasMany(Recopilador::class, 'id_encargado');
 	}
 }
