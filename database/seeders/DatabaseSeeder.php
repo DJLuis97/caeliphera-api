@@ -1,7 +1,6 @@
 <?php
 namespace Database\Seeders;
 
-use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder {
@@ -11,11 +10,8 @@ class DatabaseSeeder extends Seeder {
 	 * @return void
 	 */
 	public function run () {
-		User::query()->insert([
-			'name'              => 'Luis',
-			'email'             => 'luis@test.dev',
-			'email_verified_at' => now(),
-			'password'          => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+		$this->call([
+			UserSeeder::class
 		]);
 	}
 }
