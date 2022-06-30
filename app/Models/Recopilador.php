@@ -41,4 +41,13 @@ class Recopilador extends Model {
 	public function encargado (): BelongsTo {
 		return $this->belongsTo(Person::class, 'id_encargado');
 	}
+
+	/**
+	 * Relación._ Get the parroquia that owns the recopilador.
+	 *
+	 * @return BelongsTo
+	 */
+	public function parroquia (): BelongsTo {
+		return $this->belongsTo(Parroquia::class);
+	}
 }

@@ -17,6 +17,7 @@ class CreateRecopiladoresTable extends Migration {
 			$table->foreignIdFor(\App\Models\Person::class)->unique();
 			$table->foreignId('leader_id')->unique()->constrained('users');
 			$table->foreignId('id_encargado')->unique()->constrained('people');
+			$table->foreignIdFor(\App\Models\Parroquia::class);
 			$table->timestamps();
 		});
 	}
