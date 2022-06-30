@@ -2,6 +2,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -57,5 +58,16 @@ class User extends Authenticatable {
 	 */
 	public function recopiladoresAsLeader (): HasMany {
 		return $this->hasMany(Recopilador::class, 'leader_id');
+	}
+
+	/**
+	 * Scope a query to only include leader users.
+	 *
+	 * @param Builder $query
+	 *
+	 * @return Builder
+	 */
+	public function scopeLeader (Builder $query): Builder {
+		return $query->where('type_leader', true);
 	}
 }
