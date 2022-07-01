@@ -13,5 +13,7 @@ Route::prefix('v1')->group(function () {
 		Route::get('users/leader', [UserController::class, 'leader']);
 		// Recopilador
 		Route::post('recopiladores', [RecopiladorController::class, 'store']);
+		// Todos los encargados
+		Route::get('encargados', \App\Http\Controllers\AllEncargado::class);
 	});
 });
