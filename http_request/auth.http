@@ -1,8 +1,10 @@
 POST http://localhost:8000/api/auth/login
+Accept: application/json
 Content-Type: application/json
 
 {
 	"email": "luis@test.dev",
+	"device_name": "phpStorm",
 	"password": "{{password}}"
 }
 
