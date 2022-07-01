@@ -1,0 +1,16 @@
+POST http://localhost:8000/api/auth/login
+Accept: application/json
+Content-Type: application/json
+
+{
+	"email": "luis@test.dev",
+	"device_name": "phpStorm",
+	"password": "{{password}}"
+}
+
+> {% client.global.set('auth_token', response.body.access_token) %}
+
+###
+GET http://localhost:8000/api/auth/logout
+Accept: application/json
+Authorization: Bearer {{auth_token}}
