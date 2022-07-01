@@ -66,7 +66,8 @@ return [
 	*/
 	'middleware' => [
 		'web',
-		Authorize::class,
+		// TODO: CAMBIAR ESTO DESPUÉS
+		//Authorize::class,
 	],
 	/*
 	|--------------------------------------------------------------------------
