@@ -21,10 +21,12 @@ class PersonResource extends JsonResource {
 	 */
 	public function toArray ($request): array {
 		return [
-			'birth'     => $this->birth,
-			'ci'        => $this->ci,
-			'full_name' => $this->full_name,
-			'id'        => $this->id
+			'birth'       => $this->birth,
+			'ci'          => $this->ci,
+			'full_name'   => $this->full_name,
+			'id'          => $this->id,
+			'recopilador' => new RecopiladorResource($this->whenLoaded('recopilador')),
+			'user'        => new UserResource($this->whenLoaded('user'))
 		];
 	}
 }
