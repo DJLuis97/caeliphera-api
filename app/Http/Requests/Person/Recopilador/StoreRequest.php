@@ -38,8 +38,8 @@ class StoreRequest extends FormRequest {
 			'first_name'   => 'required|string|max:255',
 			'last_name'    => 'required|string|max:255',
 			// Atributos para recopilador
-			'id_encargado' => 'required|exists:App\Models\Person,id',
-			'parroquia_id' => 'required|exists:App\Models\Parroquia,id',
+			'id_encargado' => 'required',
+			'parroquia_id' => 'required',
 		];
 	}
 }

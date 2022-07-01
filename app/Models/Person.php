@@ -11,6 +11,13 @@ class Person extends Model {
 	use HasFactory;
 
 	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array<int, string>
+	 */
+	protected $fillable = ['birth', 'ci', 'first_name', 'last_name'];
+
+	/**
 	 * Relación._ Get the user associated with the person.
 	 *
 	 * @return HasOne

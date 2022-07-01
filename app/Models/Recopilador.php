@@ -9,6 +9,12 @@ class Recopilador extends Model {
 	use HasFactory;
 
 	/**
+	 * The attributes that are mass assignable.
+	 *
+	 * @var array<int, string>
+	 */
+	protected $fillable = ['id_encargado', 'leader_id', 'parroquia_id'];
+	/**
 	 * The table associated with the model.
 	 *
 	 * @var string

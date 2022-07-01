@@ -1,0 +1,15 @@
+POST http://localhost:8000/api/v1/recopiladores
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+	"birth": "2016-06-30",
+	"ci": "0123456789",
+	"first_name": "Juan",
+	"last_name": "Perez",
+	"id_encargado": 1,
+	"parroquia_id": 1
+}
+
+###
