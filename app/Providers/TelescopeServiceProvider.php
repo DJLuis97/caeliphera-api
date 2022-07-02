@@ -13,10 +13,11 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider {
 	 * @return void
 	 */
 	public function register () {
-		// Telescope::night();
+		Telescope::night();
 		$this->hideSensitiveRequestDetails();
 		Telescope::filter(function (IncomingEntry $entry) {
-			if ($this->app->environment('local')) {
+			// TODO: CAMBIAR ESTO DESPUÉS
+			/*if ($this->app->environment('local')) {
 				return true;
 			}
 
@@ -24,7 +25,8 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider {
 						 || $entry->isFailedRequest()
 						 || $entry->isFailedJob()
 						 || $entry->isScheduledTask()
-						 || $entry->hasMonitoredTag();
+						 || $entry->hasMonitoredTag();*/
+			return true;
 		});
 	}
 
@@ -34,7 +36,9 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider {
 	 * @return void
 	 */
 	protected function hideSensitiveRequestDetails () {
-		if ($this->app->environment('local')) {
+		// TODO: CAMBIAR ESTO DESPUÉS
+		return;
+		/*if ($this->app->environment('local')) {
 			return;
 		}
 		Telescope::hideRequestParameters(['_token']);
@@ -42,7 +46,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider {
 			'cookie',
 			'x-csrf-token',
 			'x-xsrf-token',
-		]);
+		]);*/
 	}
 
 	/**
@@ -54,8 +58,10 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider {
 	 */
 	protected function gate () {
 		Gate::define('viewTelescope', function ($user) {
-			return in_array($user->email, [//
-			]);
+			// TODO: CAMBIAR ESTO DESPUÉS
+			/*return in_array($user->email, [//
+			]);*/
+			return true;
 		});
 	}
 }
