@@ -55,7 +55,8 @@ return [
 	| the locations of the links and the values should be their targets.
 	|
 	*/
-	'links' => [
+	'links'   => [
 		public_path('storage') => storage_path('app/public'),
+		public_path('storage/cedulas') => storage_path('app/cedulas')
 	],
 ];
