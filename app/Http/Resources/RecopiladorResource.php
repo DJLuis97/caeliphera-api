@@ -21,7 +21,14 @@ class RecopiladorResource extends JsonResource {
 	 */
 	public function toArray ($request): array {
 		return [
-			'id' => $this->id
+			'address'   => $this->address,
+			'encargado' => new PersonResource($this->whenLoaded('encargado')),
+			'id'        => $this->id,
+			'latitude'  => $this->latitude,
+			'leader'    => new UserResource($this->whenLoaded('leader')),
+			'longitude' => $this->longitude,
+			'parroquia' => new ParroquiaResource($this->whenLoaded('parroquia')),
+			'person'    => new PersonResource($this->whenLoaded('person'))
 		];
 	}
 }
