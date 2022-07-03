@@ -13,7 +13,16 @@ class Recopilador extends Model {
 	 *
 	 * @var array<int, string>
 	 */
-	protected $fillable = ['id_encargado', 'leader_id', 'parroquia_id'];
+	protected $fillable = [
+		'address',
+		'address_at',
+		'ci_path',
+		'id_encargado',
+		'latitude',
+		'leader_id',
+		'longitude',
+		'parroquia_id'
+	];
 	/**
 	 * The table associated with the model.
 	 *

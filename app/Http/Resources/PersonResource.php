@@ -23,8 +23,10 @@ class PersonResource extends JsonResource {
 		return [
 			'birth'       => $this->birth,
 			'ci'          => $this->ci,
+			'first_name'  => $this->first_name,
 			'full_name'   => $this->full_name,
 			'id'          => $this->id,
+			'last_name'   => $this->last_name,
 			'recopilador' => new RecopiladorResource($this->whenLoaded('recopilador')),
 			'user'        => new UserResource($this->whenLoaded('user'))
 		];
