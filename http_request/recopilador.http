@@ -1,15 +1,61 @@
 POST http://localhost:8000/api/v1/recopiladores
 Accept: application/json
 Authorization: Bearer {{auth_token}}
-Content-Type: application/json
+Content-Type: multipart/form-data; boundary=boundary
 
-{
-	"birth": "2016-06-30",
-	"ci": "0123456789",
-	"first_name": "Juan",
-	"last_name": "Perez",
-	"id_encargado": 1,
-	"parroquia_id": 1
-}
+--boundary
+Content-Disposition: form-data; name="ci_photo"; filename="ci.jpg"
+
+< ./ci.jpeg
+
+--boundary
+Content-Disposition: form-data; name="address";
+
+Portoviejo
+
+--boundary
+Content-Disposition: form-data; name="latitude";
+
+0.0
+
+--boundary
+Content-Disposition: form-data; name="longitude";
+
+0.0
+
+--boundary
+Content-Disposition: form-data; name="birth";
+
+2016-06-30
+
+--boundary
+Content-Disposition: form-data; name="ci";
+
+0123456789
+
+--boundary
+Content-Disposition: form-data; name="first_name";
+
+Juan
+
+--boundary
+Content-Disposition: form-data; name="last_name";
+
+Pérez
+
+--boundary
+Content-Disposition: form-data; name="id_encargado";
+
+1
+
+--boundary
+Content-Disposition: form-data; name="parroquia_id";
+
+1
+
+--boundary
+Content-Disposition: form-data; name="address_at";
+
+1
 
 ###
