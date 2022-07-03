@@ -39,6 +39,7 @@ class StoreRequest extends FormRequest {
 			'last_name'    => 'required|string|max:255',
 			// Atributos para recopilador
 			'address'      => 'required|string|max:255',
+			'address_at' => 'required|date|before_or_equal:now',
 			'id_encargado' => 'required',
 			'latitude'     => 'required|string|max:255',
 			'longitude'    => 'required|string|max:255',
