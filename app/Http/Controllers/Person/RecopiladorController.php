@@ -23,9 +23,10 @@ class RecopiladorController extends Controller {
 		])->findOrFail($request->id_encargado);
 		$parroquia = Parroquia::query()->findOrFail($request->parroquia_id);
 		$recopilador_person = Person::query()->firstOrCreate($validated_person_ci, $validated_person);
-		if ($recopilador_person->has('recopilador')->exists()) {
+		// ¿Existe una persona que es también recopilador y la cédula tal?
+		if (Person::query()->has('recopilador')->where('ci', $validated_person_ci)->exists()) {
 			throw ValidationException::withMessages([
-				'ci' => 'Ya eres recopilador'
+				'ci' => 'Cédula ya pertenece a un recopilador'
 			]);
 		}
 		$recopilador = $recopilador_person->recopilador()->create([
