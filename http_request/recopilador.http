@@ -1,3 +1,9 @@
+GET http://localhost:8000/api/v1/recopiladores
+Accept: application/json
+Authorization: Bearer {{auth_token}}
+
+###
+
 POST http://localhost:8000/api/v1/recopiladores
 Accept: application/json
 Authorization: Bearer {{auth_token}}

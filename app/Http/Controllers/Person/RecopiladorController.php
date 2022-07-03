@@ -3,9 +3,11 @@ namespace App\Http\Controllers\Person;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Person\Recopilador\StoreRequest;
+use App\Http\Resources\RecopiladorCollection;
 use App\Http\Resources\RecopiladorResource;
 use App\Models\Parroquia;
 use App\Models\Person;
+use App\Models\Recopilador;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 
@@ -49,5 +51,11 @@ class RecopiladorController extends Controller {
 		]);
 
 		return new RecopiladorResource($recopilador);
+	}
+
+	public function index (): RecopiladorCollection {
+		$recopiladores = Recopilador::query()->with(['person', 'leader', 'encargado', 'parroquia'])->get();
+
+		return new RecopiladorCollection($recopiladores);
 	}
 }
