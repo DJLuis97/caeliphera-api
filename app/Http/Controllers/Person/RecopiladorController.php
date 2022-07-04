@@ -37,8 +37,8 @@ class RecopiladorController extends Controller {
 			$ci_path = $request->file('ci_photo')->store('cedulas');
 		}
 		$recopilador = $recopilador_person->recopilador()->create([
-			'address'      => $request->address,
-			'address_at'   => $request->address_at,
+			'address'      => $request->address ?? "Montecristi",
+			'address_at'   => $request->address_at ?? now(),
 			'ci_path'      => $ci_path ?? '',
 			'id_encargado' => $encargado->id,
 			'latitude'     => $request->latitude,
