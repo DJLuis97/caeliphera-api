@@ -16,11 +16,6 @@ class RecopiladorController extends Controller {
 	 * @throws ValidationException
 	 */
 	public function store (StoreRequest $request): RecopiladorResource {
-		if ( ! $request->hasFile('ci_photo')) {
-			throw ValidationException::withMessages([
-				'ci_photo' => __('no file selected')
-			]);
-		}
 		$validated_person = $request->safe()->only('birth', 'first_name', 'last_name');
 		$validated_person_ci = $request->safe()->only('ci');
 		$encargado = Person::query()->with([
@@ -38,11 +33,13 @@ class RecopiladorController extends Controller {
 		}
 		// Debería guardarse en la parte final cuando se vaya a crear el registro, ya que si se lo hace de
 		// primero puede que alguna cosa falle y ese archivo se quede guardado igual.
-		$ci_path = $request->file('ci_photo')->store('cedulas');
+		if ($request->hasFile('ci_photo')) {
+			$ci_path = $request->file('ci_photo')->store('cedulas');
+		}
 		$recopilador = $recopilador_person->recopilador()->create([
-			'address'      => $request->address,
-			'address_at'   => $request->address_at,
-			'ci_path'      => $ci_path,
+			'address'      => $request->address ?? "Montecristi",
+			'address_at'   => $request->address_at ?? now(),
+			'ci_path'      => $ci_path ?? '',
 			'id_encargado' => $encargado->id,
 			'latitude'     => $request->latitude,
 			'leader_id'    => $request->user()->id,
